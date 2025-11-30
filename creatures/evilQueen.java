@@ -6,6 +6,7 @@ import models.Human;
 
 public class evilQueen extends Human implements Disgusting {
     private boolean isWicked = true;
+    String actionName;
 
     public evilQueen() {
     }
