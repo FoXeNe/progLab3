@@ -1,10 +1,13 @@
 package models;
 
-public abstract class Animal extends AbstractCharacter {
-    private final boolean hasInstinct;
-    private final String soundType;
+import enums.Appearance;
 
-    public Animal(boolean hasInstinct, String soundType) {
+public abstract class Animal extends AbstractCharacter {
+    private boolean hasInstinct;
+    private String soundType;
+
+    public Animal(String name, Appearance appearance, boolean hasInstinct, String soundType) {
+        super(name);
         this.hasInstinct = hasInstinct;
         this.soundType = soundType;
     }
