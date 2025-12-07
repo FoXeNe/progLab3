@@ -19,7 +19,7 @@ public class Eliza extends Human implements Traveling {
         this.isCrying = false;
         this.brothers = brothers;
         this.destinationKnown = false;
-        this.currLocation = currLocation;
+        this.currLocation = LocationType.PALACE;
         this.appearance = appearance;
     }
 
@@ -29,13 +29,13 @@ public class Eliza extends Human implements Traveling {
     }
 
     public void yearn() {
-        System.out.println(name + " истосковалась по" + Arrays.toString(brothers));
+        System.out.println(name + " истосковалась по )" + Arrays.toString(brothers));
+        System.out.println(name + " решила искать братьев " + LocationType.EVERYWHERE);
     }
 
-    public void searchBrothers() {
+    public void searchBrothers(LocationType location) {
         System.out.println(name + " пошла искать братьев");
-        walkTo(LocationType.EVERYWHERE);
-        wanderlnSwamp();
+        walkTo(location);
     }
 
     @Override

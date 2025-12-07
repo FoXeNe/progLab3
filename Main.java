@@ -1,6 +1,7 @@
 import creatures.Eliza;
 import creatures.evilQueen;
 import enums.Appearance;
+import enums.LocationType;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +13,7 @@ public class Main {
         queen.tangleHair(eliza);
 
         eliza.cry();
-        eliza.searchBrothers();
+        eliza.searchBrothers(LocationType.FOREST);
         eliza.yearn();
 
     }
