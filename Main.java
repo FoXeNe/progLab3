@@ -12,6 +12,8 @@ public class Main {
         queen.tangleHair(eliza);
 
         eliza.cry();
+        eliza.searchBrothers();
+        eliza.yearn();
 
     }
 }

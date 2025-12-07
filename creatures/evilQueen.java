@@ -1,7 +1,10 @@
 package creatures;
 
+import enums.Appearance;
 import interfaces.Disgusting;
 import models.AbstractCharacter;
+
+import java.nio.file.FileSystemNotFoundException;
 
 public class evilQueen extends Human implements Disgusting {
     private boolean isWicked = true;
@@ -21,7 +24,8 @@ public class evilQueen extends Human implements Disgusting {
 
     @Override
     public void smearWithWalnutJuice(AbstractCharacter target) {
-        System.out.println("Намазала с соком элизу");
+        target.appearance = Appearance.BROWN_SKIN;
+        System.out.println("Намазала соком " + target.toString());
     }
 
     @Override
@@ -31,6 +35,7 @@ public class evilQueen extends Human implements Disgusting {
 
     @Override
     public void tangleHair(AbstractCharacter target) {
+        target.appearance = Appearance.UNKEMPT;
         System.out.println("связала волосы элизы");
     }
 }
