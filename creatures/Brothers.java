@@ -6,16 +6,8 @@ import models.AbstractCharacter;
 public class Brothers extends AbstractCharacter {
     private boolean isKicked;
 
-    public Brothers(String name, Appearance appearance, boolean isKicked) {
+    public Brothers(String name) {
         super(name);
-        this.isKicked = isKicked;
+        this.isKicked = true;
     }
-
-    public boolean isKicked() {
-        return isKicked;
-    }
-
-   public void setKicked(boolean kicked) {
-        isKicked = kicked;
-   }
 }
