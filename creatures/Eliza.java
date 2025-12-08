@@ -5,11 +5,11 @@ import enums.LocationType;
 import interfaces.Traveling;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 public class Eliza extends Human implements Traveling {
     private boolean isCrying;
-    private String[] brothers = {"святогор", "олег", "пятница"};
     private boolean destinationKnown;
     private LocationType currLocation;
     private Appearance appearance = Appearance.BEAUTIFUL;
@@ -17,7 +17,6 @@ public class Eliza extends Human implements Traveling {
     public Eliza(String name) {
         super(name);
         this.isCrying = false;
-        this.brothers = brothers;
         this.destinationKnown = false;
         this.currLocation = LocationType.PALACE;
         this.appearance = appearance;
@@ -28,8 +27,8 @@ public class Eliza extends Human implements Traveling {
         System.out.println(name + " заплакала");
     }
 
-    public void yearn() {
-        System.out.println(name + " истосковалась по )" + Arrays.toString(brothers));
+    public void yearn(String brothers) {
+        System.out.println(name + " истосковалась по " + brothers   );
         System.out.println(name + " решила искать братьев " + LocationType.EVERYWHERE);
     }
 
@@ -52,5 +51,31 @@ public class Eliza extends Human implements Traveling {
 
     public String toString() {
         return "Элиза";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Eliza eliza = (Eliza) obj;
+
+        if (!Objects.equals(name, eliza.name)) {
+            return false;
+        }
+
+        return isCrying == eliza.isCrying &&
+                destinationKnown == eliza.destinationKnown &&
+                currLocation == eliza.currLocation &&
+                appearance == eliza.appearance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, isCrying, destinationKnown, currLocation, appearance);
     }
 }

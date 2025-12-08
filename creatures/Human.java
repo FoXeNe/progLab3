@@ -15,13 +15,4 @@ public class Human extends AbstractCharacter {
         this.inventory = inventory;
         this.phrase = phrase;
     }
-
-    public void Speak(String phrase) {
-        System.out.print(name + " сказал:" + phrase);
-    }
-
-    public void takeItem(String item) {
-        inventory.add(item);
-        System.out.print(name + " взял" + item);
-    }
 }

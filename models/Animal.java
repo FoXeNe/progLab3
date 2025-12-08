@@ -1,17 +1,24 @@
 package models;
 
 import enums.Appearance;
+import interfaces.Recognizing;
 
-public abstract class Animal extends AbstractCharacter {
-    private boolean hasInstinct;
-    private String soundType;
+public abstract class Animal extends AbstractCharacter implements Recognizing {
+    protected boolean recognizing = true;
 
-    public Animal(String name, Appearance appearance, boolean hasInstinct, String soundType) {
+    public Animal(String name) {
         super(name);
-        this.hasInstinct = hasInstinct;
-        this.soundType = soundType;
+        this.recognizing = recognizing;
     }
 
-    public abstract void makeSound();
-    public abstract boolean senseMagic();
+    public void Recognize(AbstractCharacter target) {
+        if (target.name == "Элиза") {
+            this.recognizing = false;
+            System.out.println("Узнала ли " + name + " " + target + "? " + recognizing);
+        }
+        else {
+            this.recognizing = true;
+            System.out.println("Узнала ли " + name + " " + target + "? " + recognizing);
+        }
+    }
 }

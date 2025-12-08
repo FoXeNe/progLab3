@@ -1,41 +1,50 @@
 package creatures;
 
 import enums.Appearance;
+import exception.CurseException;
 import interfaces.Disgusting;
 import models.AbstractCharacter;
+import record.QueenAction;
 
 import java.nio.file.FileSystemNotFoundException;
 
 public class evilQueen extends Human implements Disgusting {
     private boolean isWicked = true;
-    String actionName;
+    int counter =  0;
 
     public evilQueen(String name) {
         super(name);
     }
 
-    public void speak(String phrase) {
-        System.out.println("злая королева сказала: " + phrase);
-    }
-    @Override
-    public void takeItem(String item) {
-        System.out.println(item);
-    }
-
     @Override
     public void smearWithWalnutJuice(AbstractCharacter target) {
         target.appearance = Appearance.BROWN_SKIN;
-        System.out.println("Намазала соком " + target.toString());
+        QueenAction queenAction = new QueenAction("Намазала соком", target);
+        queenAction.logAction();
+        counter++;
+        if (counter > 3) {
+            throw new CurseException("Больше 3 заклинаний");
+        }
     }
 
     @Override
     public void applySmellyOintment(AbstractCharacter target) {
-        System.out.println("чето сделала короче");
+        QueenAction queenAction = new QueenAction("Вымазала личико вонючей мазью", target);
+        queenAction.logAction();
+        counter++;
+        if (counter > 3) {
+            throw new CurseException("Больше 3 заклинаний");
+        }
     }
 
     @Override
     public void tangleHair(AbstractCharacter target) {
         target.appearance = Appearance.UNKEMPT;
-        System.out.println("связала волосы элизы");
+        QueenAction queenAction = new QueenAction("связала волосы", target);
+        queenAction.logAction();
+        counter++;
+        if (counter > 3) {
+            throw new CurseException("Больше 3 заклинаний");
+        }
     }
 }
